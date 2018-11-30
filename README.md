@@ -1,7 +1,7 @@
 # MoCCasIN
 The **M**edical **C**lassification **C**ode F**in**der (*for research purposes only*)
 
-**MoCCasIN** is a [Oracle Helidon](https://github.com/oracle/helidon) based microservice, exhibiting a REST endpoint for retrieval and search of the following two medical code catalogs:
+**MoCCasIN** is a [Oracle Helidon](https://github.com/oracle/helidon) based microservice, and java library and a js library to visualize and search of the following two medical code catalogs:
 
 - [International Statistical Classification of Diseases and Related Health Problems](https://en.wikipedia.org/wiki/International_Statistical_Classification_of_Diseases_and_Related_Health_Problems)
 - [Anatomical Therapeutic Chemical Classification System](https://en.wikipedia.org/wiki/Anatomical_Therapeutic_Chemical_Classification_System)
