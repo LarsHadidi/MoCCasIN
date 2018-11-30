@@ -1,5 +1,5 @@
 # MoCCasIN
-The Medical Classification Code Finder (*for research purposes only*)
+The **M**edical **C**lassification **C**ode F**in**der (*for research purposes only*)
 
 **MoCCasIN** is a [Oracle Helidon](https://github.com/oracle/helidon) based microservice, exhibiting a REST endpoint for retrieval and search of the following two medical code catalogs:
 
