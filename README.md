@@ -10,7 +10,7 @@ Those are controlled by the [World Health Organization](http://www.who.int/).
 
 This microservice serves as an open source service to include those catalogs into any server application. 
 
-MoCCasIn relies on CSV versions of those catalogs, which are be obtained in Germany via the homepage of the [German Institute for Medical Documentation and Information](https://www.dimdi.de/dynamic/en/homepage/index.html). The institute advises to not use the CSV data in order to implement medical coding software as most of the metadata is absent.
+MoCCasIn relies on CSV versions of those catalogs, which are to be obtained via the homepage of the [German Institute for Medical Documentation and Information](https://www.dimdi.de/dynamic/en/homepage/index.html). The institute advises to not use the CSV data in order to implement medical coding software as most of the metadata is absent.
 
 # Disclaimer
 
