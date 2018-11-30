@@ -16,9 +16,9 @@ MoCCasIn relies on CSV versions of those catalogs, which are to be obtained via 
 
 **MoCCasIN is not meant to be used in the normal course of clinical work.**
 
-**I do not provide any warranty for correctness and completenes of MoCCasIN.**
+**No warranty for correctness or completenes of MoCCasIN is provided.**
 
-**Usage is on the user's responsibility.**
+**See the license document for further information.**
 
 ## Description
 
