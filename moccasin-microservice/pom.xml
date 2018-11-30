@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>MoCCasIN.moccasin</groupId>
+  <artifactId>microservice</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>moccasin-microservice</name>
+  <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+  <properties>
+    <mainClass>moccasin.moccasin.Main</mainClass>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+    <libs.classpath.prefix>libs</libs.classpath.prefix>
+    <copied.libs.dir>${project.build.directory}/${libs.classpath.prefix}</copied.libs.dir>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <argLine>-Dfile.encoding=UTF-8</argLine>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>MoCCasIN.moccasin</groupId>
+      <artifactId>moccasin-library</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.helidon.microprofile.bundles</groupId>
+      <artifactId>helidon-microprofile-1.2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss</groupId>
+      <artifactId>jandex</artifactId>
+        <scope>runtime</scope>
+        <optional>true</optional>
+    </dependency>
+  </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.helidon</groupId>
+                <artifactId>helidon-bom</artifactId>
+                <version>0.10.4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jandex</artifactId>
+                <version>2.0.4.Final</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+  <build>
+    <finalName>moccasin-microservice</finalName>
+    <plugins>
+        <plugin>
+            <groupId>MoCCasIN.moccasin</groupId>
+            <artifactId>moccasin-generator</artifactId>
+            <version>1.0</version>
+            <configuration>
+                <targetPath>libs/trees</targetPath>
+                <sourcePath>libs/trees</sourcePath>
+                <icdChaptersFile>icd10gm2018syst_kapitel.txt</icdChaptersFile>
+                <icdGroupsFile>icd10gm2018syst_gruppen.txt</icdGroupsFile>
+                <icdCodesFile>icd10gm2018syst_kodes.txt</icdCodesFile>
+                <atcCodesFile>Amtlicher_ATC_Index_2017_.CSV</atcCodesFile>
+                <icdCsvSeparator>;</icdCsvSeparator>
+                <atcCsvSeparator>;</atcCsvSeparator>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>copy-dependencies</id>
+                    <phase>prepare-package</phase>
+                    <goals>
+                        <goal>copy-dependencies</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${copied.libs.dir}</outputDirectory>
+                        <overWriteReleases>false</overWriteReleases>
+                        <overWriteSnapshots>false</overWriteSnapshots>
+                        <overWriteIfNewer>true</overWriteIfNewer>
+                        <overWriteIfNewer>true</overWriteIfNewer>
+                        <includeScope>runtime</includeScope>
+                        <excludeScope>test</excludeScope>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+      <pluginManagement>
+         <plugins>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-jar-plugin</artifactId>
+                 <version>2.5</version>
+                 <configuration>
+                     <archive>
+                         <manifest>
+                             <addClasspath>true</addClasspath>
+                             <classpathPrefix>${libs.classpath.prefix}</classpathPrefix>
+                             <mainClass>${mainClass}</mainClass>
+                         </manifest>
+                     </archive>
+                 </configuration>
+             </plugin>
+         </plugins>
+      </pluginManagement>
+  </build>
+</project>
