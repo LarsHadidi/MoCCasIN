@@ -10,11 +10,13 @@ They are controlled by the [World Health Organization](http://www.who.int/). The
 
 MoCCasIn relies on CSV version of those catalogs, which can be obtained in Germany via the homepage of the [German Institute for Medical Documentation and Information](https://www.dimdi.de/dynamic/en/homepage/index.html).
 
-**MoCCasIN does not provide the complete set of metadata for the ICD codes and is not meant to be used in the normal course of clinical work**
+# Disclaimer
 
-**I do not provide any warranty for correctness and completenes of MoCCasIN**
+**MoCCasIN does not provide the complete set of metadata for the ICD codes and is not meant to be used in the normal course of clinical work.**
 
-**Usage is on the user's responsibility**
+**I do not provide any warranty for correctness and completenes of MoCCasIN*.*
+
+**Usage is on the user's responsibility.**
 
 ## Description
 
