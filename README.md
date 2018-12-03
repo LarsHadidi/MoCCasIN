@@ -1,5 +1,5 @@
 # MoCCasIN
-<img src="https://cdn.rawgit.com/wiki/LarsHadidi/BDSim/res/img/Feather.png" width="90" align="left" hspace="10" vspace="8" alt="Logo"/>
+<img src="https://github.com/LarsHadidi/ResourcesRepository/blob/master/Feather.png" width="90" align="left" hspace="10" vspace="8" alt="Logo"/>
 
 The **M**edical **C**lassification **C**ode F**in**der (*for research purposes only*)
 
