@@ -1,4 +1,6 @@
 # MoCCasIN
+<img src="https://cdn.rawgit.com/wiki/LarsHadidi/BDSim/res/img/Feather.png" width="90" align="left" hspace="10" vspace="8" alt="Logo"/>
+
 The **M**edical **C**lassification **C**ode F**in**der (*for research purposes only*)
 
 **MoCCasIN** is a [Oracle Helidon](https://github.com/oracle/helidon) based microservice, and java library and a js library to visualize and search of the following two medical code catalogs:
@@ -13,9 +15,6 @@ This microservice serves as an open source service to include those catalogs int
 MoCCasIn relies on CSV versions of those catalogs, which are to be obtained via the homepage of the [German Institute for Medical Documentation and Information](https://www.dimdi.de/dynamic/en/homepage/index.html). The institute advises to not use the CSV data in order to implement medical coding software as most of the metadata is absent.
 
 # Disclaimer
-
-**MoCCasIN is not meant to be used in the normal course of clinical work.**
-
 **No warranty for correctness or completenes of MoCCasIN is provided.**
 
 **See the license document for further information.**
