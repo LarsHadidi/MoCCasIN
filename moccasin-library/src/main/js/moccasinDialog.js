@@ -17,7 +17,7 @@ function MoccasinDialog(inputText, url) {
     '            <div class="modal-dialog" role="document">\n' +
     '                <div class="modal-content" style="width:50em;">\n' +
     '                    <div class="modal-header">\n' +
-    '                        <h3 class="modal-title" style="display: inline;" id="moccasinDialogLabel">Katalog</h3>\n' +
+    '                        <h3 class="modal-title" style="display: inline;" id="moccasinDialogLabel">' + inputText.getAttribute('name') + '</h3>\n' +
     '                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">\n' +
     '                            <span aria-hidden="true">&times;</span>\n' +
     '                        </button>\n' +
