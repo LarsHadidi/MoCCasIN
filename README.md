@@ -61,7 +61,7 @@ In your project, like in the MoCCasIN microservice, add the plug-in into your po
     </configuration>
 </plugin>
 ```
-containing the following values inside the nodes:
+containing the following values for the nodes:
 - targetPath: Path to the folder where the tree files should be generated into. 
 - sourcePath: Path to the folder containing the CSV data from DIMDI.
 - icdChaptersFile: Name of the file within *sourcePath* holding the ICD chapters.
@@ -72,5 +72,27 @@ containing the following values inside the nodes:
 - atcCsvSeparator: ATC separator symbol used in the files for the atc catalog.
 
 ### MoCCasIN Java Library
+
+Within the folder `moccasin-library` run `mvn install`. You may need to set maven's platform encoding to `UTF-8`.
+
+In your project, like in the MoCCasIN microservice, add the dependency into your pom.xml:
+
+```xml
+<dependency>
+  <groupId>MoCCasIN.moccasin</groupId>
+  <artifactId>moccasin-library</artifactId>
+  <version>1.0</version>
+</dependency>
+```
+
+You can then use the class `moccasin.moccasin.controller.TreeBuilder` within your code. See the JavaDoc for the functionality descriptions of its methods.
+
 ### MoCCasIN Microservice
+
+Within the folder `moccasin-microservice` run `mvn package`. You may need to set maven's platform encoding to `UTF-8`.
+
+It expects the tree files to be located in the folder `libs/trees` within its working directory. This can be set in the `microprofile-config.properties` file in `src/main/resources/META-INF`. You can also specify host and port there. To start the mircoservice, run `java -jar moccasin-microservice.jar`
+
 ### MoCCasIN JS Library
+
+
