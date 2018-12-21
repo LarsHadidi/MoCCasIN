@@ -15,7 +15,7 @@ This microservice serves as an open source service to include those catalogs int
 
 MoCCasIn relies on CSV versions of those catalogs, which are to be obtained via the homepage of the [German Institute for Medical Documentation and Information](https://www.dimdi.de/dynamic/en/homepage/index.html). The institute advises to not use the CSV data in order to implement medical coding software as most of the metadata is absent.
 
-# Disclaimer
+## Disclaimer
 **No warranty for correctness or completenes of MoCCasIN is provided.**
 
 **See the license document for further information.**
@@ -89,10 +89,48 @@ You can then use the class `moccasin.moccasin.controller.TreeBuilder` within you
 
 ### MoCCasIN Microservice
 
-Within the folder `moccasin-microservice` run `mvn package`. You may need to set maven's platform encoding to `UTF-8`.
+Inside folder `moccasin-microservice` run `mvn package`. You may need to set maven's platform encoding to `UTF-8`.
 
 It expects the tree files to be located in the folder `libs/trees` within its working directory. This can be set in the `microprofile-config.properties` file in `src/main/resources/META-INF`. You can also specify host and port there. To start the mircoservice, run `java -jar moccasin-microservice.jar`
 
 ### MoCCasIN JS Library
+
+The JavaScript library can be found in `moccasin-library/src/main/js/`. Include the script into your HTML markup. The library has the following JS dependencies:
+- [jsTree](https://github.com/vakata/jstree)
+- [jQuery](https://jquery.com/)
+- [Bootstrap](https://getbootstrap.com/)
+
+The **M**edical **C**lassification **C**ode F**in**der UI element needs to be created on an `input` element which has the following attributes:
+- type: `text`
+- class: `moccasin`
+- data-uuid: an universally unique identifier
+- data-catalog: a string denoting the type of catalog to use, either `"icd"` or `"atc"`
+
+The MoCCasIN UI element will be initialised using the following constructor:
+
+```js
+new MoccasinDialog(dom-input-element, url-to-microservice);
+```
+
+The following example illustrates its usage:
+
+```html
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.5/jstree.min.js"></script>
+    <script src="moccasin-library/src/main/js/moccasinDialog.js"></script>
+
+    <script>
+           $(".moccasin").each(function (index) {
+               new MoccasinDialog($(this)[0], "http://localhost/moccasin");
+            });
+    </script>
+</head>
+<body>
+    <input type="text" class="moccasin" name="ICD Catalog" data-uuid="1b64534e-b164-4505-8fac-20f6a30d0661" data-catalog="icd"/>
+</body>
+
+```
 
 
