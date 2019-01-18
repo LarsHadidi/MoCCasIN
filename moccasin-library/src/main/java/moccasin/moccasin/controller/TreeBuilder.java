@@ -16,14 +16,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
 
-import static com.googlecode.cqengine.query.QueryFactory.and;
-import static com.googlecode.cqengine.query.QueryFactory.contains;
+import static com.googlecode.cqengine.query.QueryFactory.*;
 
 public class TreeBuilder {
     private ObjectMapper objectMapper = new ObjectMapper();
@@ -32,7 +28,7 @@ public class TreeBuilder {
     private IndexedCollection<TreeNode> icdSearchIndex;
     private IndexedCollection<TreeNode> atcSearchIndex;
     
-    private final static Logger LOGGER = Logger.getLogger(TreeBuilder.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TreeBuilder.class.getName());
 
 
     /**
@@ -259,18 +255,27 @@ public class TreeBuilder {
      */
     private ArrayNode searchTreeLeaves(String searchString, IndexedCollection<TreeNode> searchIndex) {
         String[] searchWords = searchString.split(" ");
+        ArrayNode resultArrayNode = objectMapper.createArrayNode();
 
         Query<TreeNode> searchQuery;
-        searchQuery = contains(TreeNode.LOWERCASE_LABEL_ATTR, searchWords[0].toLowerCase());
-        if (searchWords.length > 1) {
-            for (int i = 1; i < searchWords.length; ++i) {
-                searchQuery = and(searchQuery, contains(TreeNode.LOWERCASE_LABEL_ATTR, searchWords[i].toLowerCase()));
-            }
+        if(searchWords.length == 1) {
+            searchQuery = contains(TreeNode.LOWERCASE_LABEL_ATTR, searchWords[0].toLowerCase());
+            searchQuery = or(searchQuery, contains(TreeNode.CODE_ATTR, searchWords[0]));
+        }
+        else if (searchWords.length == 2) {
+            searchQuery = and(contains(TreeNode.LOWERCASE_LABEL_ATTR, searchWords[0].toLowerCase()), contains(TreeNode.LOWERCASE_LABEL_ATTR, searchWords[1].toLowerCase()));
+        }
+        else if(searchWords.length > 2) {
+            ArrayList<Query<TreeNode>> additionalQueries = new ArrayList<>();
+            Arrays.stream(searchWords).skip(2).forEach(searchWord ->  additionalQueries.add(contains(TreeNode.LOWERCASE_LABEL_ATTR, searchWord.toLowerCase())));
+
+            searchQuery = and(contains(TreeNode.LOWERCASE_LABEL_ATTR, searchWords[0].toLowerCase()), contains(TreeNode.LOWERCASE_LABEL_ATTR, searchWords[1].toLowerCase()), additionalQueries);
+        }
+        else {
+            return resultArrayNode;
         }
 
         ResultSet<TreeNode> searchResult = searchIndex.retrieve(searchQuery);
-
-        ArrayNode resultArrayNode = objectMapper.createArrayNode();
         HashMap<TreeNode, ObjectNode> parentIndexMap = new HashMap<>();
         ArrayList<TreeNode> forest = new ArrayList<>();
         searchResult.forEach(treeNode -> createBottomUpPath(treeNode, objectMapper.createObjectNode(), parentIndexMap, resultArrayNode, forest));
