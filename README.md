@@ -14,8 +14,8 @@ Those are controlled by the [World Health Organization](http://www.who.int/).
 This microservice serves as an open source service to include those catalogs into any server application. 
 
 MoCCasIn relies on CSV versions of those catalogs, which are to be obtained via the homepage of the [German Institute for Medical Documentation and Information](https://www.dimdi.de/dynamic/en/homepage/index.html). 
-- *ICD* Head over to the downloads page and get the ICD-10-GM Metadaten TXT (CSV).
-- *ATC* Follow the WIdo link to the Excel list of ATC codes.
+- **ICD:** Head over to the downloads page and get the ICD-10-GM Metadaten TXT (CSV).
+- **ATC:** Follow the WIdo link to the Excel list of ATC codes.
 
 ## Disclaimer
 **No warranty for correctness or completenes of MoCCasIN is provided.**
